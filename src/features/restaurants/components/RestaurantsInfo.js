@@ -4,8 +4,16 @@ import { StyleSheet, Text } from 'react-native';
 import { Card, Paragraph } from 'react-native-paper';
 
 const Title = styled.Text`
-  color: red;
   padding: 16px;
+`;
+
+const ResturantCard = styled(Card)`
+  background-color: white;
+`;
+
+const CardCover = styled(Card.Cover)`
+  padding: 20px;
+  background-color: white;
 `;
 
 const RestaurantsInfo = ({ restaurant = {} }) => {
@@ -22,24 +30,11 @@ const RestaurantsInfo = ({ restaurant = {} }) => {
   } = restaurant;
 
   return (
-    <Card elevation={5} style={styles.card}>
-      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
-      <Title style={styles.title}>{name}</Title>
-    </Card>
+    <ResturantCard elevation={5}>
+      <CardCover key={name} source={{ uri: photos[0] }} />
+      <Title>{name}</Title>
+    </ResturantCard>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'white',
-  },
-  cover: {
-    padding: 20,
-    backgroundColor: 'white',
-  },
-  title: {
-    padding: 16,
-  },
-});
 
 export default RestaurantsInfo;
