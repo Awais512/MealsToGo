@@ -1,19 +1,21 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { StyleSheet, Text } from 'react-native';
-import { Card, Paragraph } from 'react-native-paper';
+import { Text } from 'react-native';
+import { Card } from 'react-native-paper';
+import { theme } from '../../../infrastructure/theme';
 
-const Title = styled.Text`
-  padding: 16px;
-`;
-
-const ResturantCard = styled(Card)`
+const RestaurantCard = styled(Card)`
   background-color: white;
 `;
 
-const CardCover = styled(Card.Cover)`
+const RestaurantCardCover = styled(Card.Cover)`
   padding: 20px;
   background-color: white;
+`;
+
+const Title = styled(Text)`
+  padding: 16px;
+  color: ${theme.colors.ui.primary};
 `;
 
 const RestaurantsInfo = ({ restaurant = {} }) => {
@@ -30,10 +32,10 @@ const RestaurantsInfo = ({ restaurant = {} }) => {
   } = restaurant;
 
   return (
-    <ResturantCard elevation={5}>
-      <CardCover key={name} source={{ uri: photos[0] }} />
+    <RestaurantCard elevation={5}>
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Title>{name}</Title>
-    </ResturantCard>
+    </RestaurantCard>
   );
 };
 
