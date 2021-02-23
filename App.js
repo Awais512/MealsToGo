@@ -1,7 +1,7 @@
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import RestaurantsScreen from './src/features/restaurants/screen/RestaurantsScreen';
+import { RestaurantsScreen } from './src/features/restaurants/screen/RestaurantsScreen';
 import { theme } from './src/infrastructure/theme';
 
 export default function App() {
