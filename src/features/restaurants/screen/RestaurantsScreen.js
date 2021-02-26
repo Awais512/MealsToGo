@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import { RestaurantInfoCard } from '../components/RestaurantsInfoCard';
 import { Spacer } from '../../../components/Spacer';
 
-const SafeArea = styled(SafeAreaView)`
+export const SafeArea = styled(SafeAreaView)`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
@@ -19,7 +19,7 @@ const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
   },
-});
+})``;
 
 export const RestaurantsScreen = () => (
   <SafeArea>
@@ -49,7 +49,6 @@ export const RestaurantsScreen = () => (
         </Spacer>
       )}
       keyExtractor={(item) => item.name}
-      contentContainerStyle={{ padding: 16 }}
     />
   </SafeArea>
 );
