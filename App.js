@@ -14,6 +14,12 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { SafeArea } from './src/components/utility/SafeAreaComponent';
 import { Text } from './src/components/typography/Text';
 
+const TAB_ICON = {
+  Restaurants: 'md-restaurant',
+  Map: 'md-map',
+  Settings: 'md-settings',
+};
+
 const Settings = () => (
   <SafeArea>
     <Text>Settings</Text>
@@ -26,6 +32,15 @@ const Map = () => (
 );
 
 const Tab = createBottomTabNavigator();
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -44,22 +59,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => {
-                let iconName;
-
-                if (route.name === 'Restaurants') {
-                  iconName = 'md-restaurant';
-                } else if (route.name === 'Settings') {
-                  iconName = 'md-settings';
-                } else if (route.name === 'Map') {
-                  iconName = 'md-map';
-                }
-
-                // You can return any component that you like here!
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-            })}
+            screenOptions={createScreenOptions}
             tabBarOptions={{
               activeTintColor: 'tomato',
               inactiveTintColor: 'gray',
