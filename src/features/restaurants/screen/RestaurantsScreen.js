@@ -6,13 +6,14 @@ import styled from 'styled-components/native';
 import { RestaurantInfoCard } from '../components/RestaurantsInfoCard';
 import { Spacer } from '../../../components/Spacer';
 import { RestaurantsContext } from '../../../services/restaurents/restaurents.context';
+import { Search } from '../components/SearchComponent';
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
-const SearchContainer = styled.View`
+export const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
@@ -40,9 +41,7 @@ export const RestaurantsScreen = () => {
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
