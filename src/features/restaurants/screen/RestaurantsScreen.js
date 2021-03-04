@@ -7,6 +7,7 @@ import { RestaurantInfoCard } from '../components/RestaurantsInfoCard';
 import { Spacer } from '../../../components/Spacer';
 import { RestaurantsContext } from '../../../services/restaurents/restaurents.context';
 import { Search } from '../components/SearchComponent';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -46,11 +47,13 @@ export const RestaurantsScreen = ({ navigation }) => {
         data={restaurants}
         renderItem={({ item }) => {
           return (
-            <Pressable onPress={() => navigation.navigate('RestaurantDetail')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('RestaurantDetail')}
+            >
               <Spacer position='bottom' size='large'>
                 <RestaurantInfoCard restaurant={item} />
               </Spacer>
-            </Pressable>
+            </TouchableOpacity>
           );
         }}
         keyExtractor={(item) => item.name}
