@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/native';
-import { StyleSheet, View, Image } from 'react-native';
+import { View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { Spacer } from '../../../components/Spacer';
 import { Text } from '../../../components/typography/Text';
+import { Favourite } from '../../../components/favourites/FavouritesComponent';
 import {
   Icon,
   RestaurantCard,
@@ -36,7 +36,11 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      {/* <RestaurantCardCover key={name} source={{ uri: photos[0] }} /> */}
+      <View>
+        <Favourite />
+        <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      </View>
       <Info>
         <Text variant='label'>{name}</Text>
         <Section>
