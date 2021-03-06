@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { Search } from '../components/SearchComponent';
 import { LocationContext } from '../../../services/location/location.context';
 import { RestaurantsContext } from '../../../services/restaurents/restaurents.context';
+import { MapCallout } from '../components/MapCallout';
 
 const Map = styled(MapView)`
   height: 100%;
@@ -45,7 +46,11 @@ export const MapScreen = () => {
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
-            />
+            >
+              <MapView.Callout>
+                <MapCallout restaurant={restaurant} />
+              </MapView.Callout>
+            </MapView.Marker>
           );
         })}
       </Map>
