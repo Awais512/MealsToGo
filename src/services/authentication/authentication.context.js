@@ -29,7 +29,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       return;
     }
     firebase
-      .apps()
+      .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((u) => {
         setUser(u);
