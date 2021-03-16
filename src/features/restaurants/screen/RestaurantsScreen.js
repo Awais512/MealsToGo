@@ -10,6 +10,7 @@ import { RestaurantsContext } from '../../../services/restaurents/restaurents.co
 import { Search } from '../components/SearchComponent';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FavouritesContext } from '../../../services/favourites/favourites.context';
+import { RestaurantList } from '../components/RestaurantsListStyle';
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -19,12 +20,6 @@ export const SafeArea = styled(SafeAreaView)`
 export const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
