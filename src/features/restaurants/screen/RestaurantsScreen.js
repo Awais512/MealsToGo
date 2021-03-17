@@ -11,6 +11,7 @@ import { Search } from '../components/SearchComponent';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FavouritesContext } from '../../../services/favourites/favourites.context';
 import { RestaurantList } from '../components/RestaurantsListStyle';
+import { FadeInView } from '../../../components/animations/FadeAnimation';
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -63,7 +64,9 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position='bottom' size='large'>
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
