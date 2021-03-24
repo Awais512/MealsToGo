@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useCallback, useState } from 'react';
 import { List, Avatar } from 'react-native-paper';
 import { SafeArea } from '../../../components/utility/SafeAreaComponent';
 import { AuthenticationContext } from '../../../services/authentication/authentication.context';
@@ -12,7 +12,6 @@ import { useFocusEffect } from '@react-navigation/native';
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
-
 const AvatarContainer = styled.View`
   align-items: center;
 `;
@@ -26,9 +25,11 @@ export const SettingsScreen = ({ navigation }) => {
     setPhoto(photoUri);
   };
 
-  useFocusEffect(() => {
-    getProfilePicture(user);
-  }, [user]);
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [user])
+  );
 
   return (
     <SafeArea>
