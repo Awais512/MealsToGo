@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import MapView from 'react-native-maps';
 import styled from 'styled-components/native';
-import { Search } from '../components/SearchComponent';
+
 import { LocationContext } from '../../../services/location/location.context';
 import { RestaurantsContext } from '../../../services/restaurents/restaurents.context';
+
+import { Search } from '../components/SearchComponent';
 import { MapCallout } from '../components/MapCallout';
 
 const Map = styled(MapView)`
@@ -18,6 +20,7 @@ export const MapScreen = ({ navigation }) => {
   const [latDelta, setLatDelta] = useState(0);
 
   const { lat, lng, viewport } = location;
+  console.log(lat, lng);
 
   useEffect(() => {
     const northeastLat = viewport.northeast.lat;
