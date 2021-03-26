@@ -20,11 +20,9 @@ const mockImages = [
   'https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-600x400.jpg',
 ];
 
-module.exports.addMockImages = (restaurant) => {
-  const rndomImages = (restaurant.photos = [
-    mockImages[Math.ceil(Math.random() * mockImages.length - 1)],
-  ]);
-
-  restaurant.photos = [rndomImages];
+module.exports.addMockImage = (restaurant) => {
+  const randomImage =
+    mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
+  restaurant.photos = [randomImage];
   return restaurant;
 };

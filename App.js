@@ -1,5 +1,5 @@
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React from 'react';
 import * as firebase from 'firebase';
 import { ThemeProvider } from 'styled-components/native';
 
@@ -11,7 +11,6 @@ import {
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 
 import { Navigation } from './src/infrastructure/navigation';
-import { useEffect } from 'react/cjs/react.development';
 import { AuthenticationContextProvider } from './src/services/authentication/authentication.context';
 
 const firebaseConfig = {

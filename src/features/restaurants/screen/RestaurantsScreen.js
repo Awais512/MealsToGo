@@ -1,26 +1,20 @@
 import React, { useContext, useState } from 'react';
-import { ActivityIndicator, Colors } from 'react-native-paper';
-import { StatusBar, FlatList, SafeAreaView, Pressable } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import { ActivityIndicator, Colors } from 'react-native-paper';
 
-import { RestaurantInfoCard } from '../components/RestaurantsInfoCard';
+import { FadeInView } from '../../../components/animations/FadeAnimation';
+import { SafeArea } from '../../../components/utility/SafeAreaComponent';
 import { Spacer } from '../../../components/Spacer';
 import { FavouritesBar } from '../../../components/favourites/FavouritesBar';
+
 import { RestaurantsContext } from '../../../services/restaurents/restaurents.context';
-import { Search } from '../components/SearchComponent';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FavouritesContext } from '../../../services/favourites/favourites.context';
+
+import { Search } from '../components/SearchComponent';
+import { RestaurantInfoCard } from '../components/RestaurantsInfoCard';
+
 import { RestaurantList } from '../components/RestaurantsListStyle';
-import { FadeInView } from '../../../components/animations/FadeAnimation';
-
-export const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
-
-export const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -35,6 +29,7 @@ export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
   const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
+
   return (
     <SafeArea>
       {isLoading && (
@@ -52,6 +47,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           onNavigate={navigation.navigate}
         />
       )}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
