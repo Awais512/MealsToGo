@@ -1,11 +1,12 @@
 import camelize from 'camelize';
+import { host } from '../../utils/env';
 
 export const restaurantsRequest = (location) => {
-  return fetch(
-    ` https://us-central1-thesocial-c43f1.cloudfunctions.net/placesNearby?location=${location}`
-  ).then((res) => {
-    return res.json();
-  });
+  return fetch(`https://${host}/placesNearby?location=${location}`).then(
+    (res) => {
+      return res.json();
+    }
+  );
 };
 
 export const restaurantsTransform = ({ results = [] }) => {
