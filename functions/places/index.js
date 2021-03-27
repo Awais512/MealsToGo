@@ -23,7 +23,7 @@ module.exports.placesRequest = (request, response, client) => {
   if (mock === 'true') {
     const data = mocks[location];
     if (data) {
-      data.results = data.results.map(addGoogleImage);
+      data.results = data.results.map(addMockImage);
     }
 
     return response.json(data);
@@ -39,7 +39,7 @@ module.exports.placesRequest = (request, response, client) => {
       timeout: 1000,
     })
     .then((res) => {
-      res.data.results = res.data.results.map(addMockImage);
+      res.data.results = res.data.results.map(addGoogleImage);
       return response.json(res.data);
     })
     .catch((e) => {
